@@ -1,17 +1,17 @@
-import { Inter } from 'next/font/google';
-import { Toaster } from '@/components/ui/toaster';
-import { ThemeProvider } from '@/components/theme-provider';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
-import { CartProvider } from '@/context/cart-context';
-import { Metadata } from 'next';
-import './globals.css';
+import { Inter } from "next/font/google";
+import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import { CartProvider } from "@/context/cart-context";
+import { Metadata } from "next";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'ErrorFix | Goodish Solutions for Developer Nightmares',
-  description: 'Because Code Breaks and Someone Has to Fix it ',
+  title: "Interdimensional Depot | Goods from Beyond",
+  description: "Because Code Breaks and Someone Has to Fix it ",
 };
 
 export default function RootLayout({
@@ -34,5 +34,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

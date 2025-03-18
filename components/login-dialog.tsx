@@ -6,15 +6,22 @@
  * @ai_context: Dialog component that integrates with the auth store
  */
 
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useAuthStore } from '@/lib/store';
-import { Loader2 } from 'lucide-react';
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useAuthStore } from "@/lib/store";
+import { Loader2 } from "lucide-react";
 
 interface LoginDialogProps {
   open: boolean;
@@ -22,55 +29,58 @@ interface LoginDialogProps {
 }
 
 export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
-  const login = useAuthStore(state => state.login);
-  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
-  
+
+  const login = useAuthStore((state) => state.login);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setIsLoading(true);
-    
+
     try {
       // SENTRY-TEST-AREA: This function call can be modified to test Sentry error monitoring
       const result = await login(email, password);
-      
+
       if (!result.success) {
-        setError(result.error || 'Login failed. Please try again.');
+        setError(result.error || "Login failed. Please try again.");
       } else {
         onOpenChange(false);
       }
     } catch (err) {
       // Capture the error with Sentry with enhanced context
-      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
-      const isConfigError = errorMessage.includes('CONFIG_MISMATCH');
-    
+      const errorMessage = err instanceof Error ? err.message : "Unknown error";
+      const isConfigError = errorMessage.includes("CONFIG_MISMATCH");
+
       // Provide a more helpful error message for configuration issues
       if (isConfigError) {
-        setError('Authentication system configuration error. Please contact support.');
+        setError(
+          "Authentication system configuration error. Please contact support.",
+        );
       } else {
-        setError('An unexpected error occurred. Please try again.');
+        setError("An unexpected error occurred. Please try again.");
       }
-      console.error('Login error:', err);
+      console.error("Login error:", err);
     } finally {
       setIsLoading(false);
     }
   };
-  
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px] bg-gray-900 border-gray-800">
         <DialogHeader>
-          <DialogTitle className="text-xl text-red-500">Login to ErrorFix</DialogTitle>
+          <DialogTitle className="text-xl text-green-500">
+            Login to Interdimensional Depot
+          </DialogTitle>
           <DialogDescription>
-            Enter your credentials to access your error fix solutions.
+            Enter your credentials to access the multiverse's best products.
           </DialogDescription>
         </DialogHeader>
-        
+
         <form onSubmit={handleSubmit} className="space-y-4 py-4">
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
@@ -85,7 +95,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
               disabled={isLoading}
             />
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
             <Input
@@ -99,20 +109,19 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
               disabled={isLoading}
             />
             <p className="text-xs text-muted-foreground">
-              For demo purposes, any password will work with a valid email format.
+              For demo purposes, any password will work with a valid email
+              format.
             </p>
           </div>
-          
+
           {error && (
-            <div className="text-sm text-red-500 font-medium">
-              {error}
-            </div>
+            <div className="text-sm text-green-500 font-medium">{error}</div>
           )}
-          
+
           <DialogFooter>
-            <Button 
-              type="submit" 
-              className="w-full bg-red-600 hover:bg-red-700 text-white"
+            <Button
+              type="submit"
+              className="w-full bg-green-600 hover:bg-green-700 text-white"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -121,7 +130,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
                   Logging in...
                 </>
               ) : (
-                'Login'
+                "Login"
               )}
             </Button>
           </DialogFooter>

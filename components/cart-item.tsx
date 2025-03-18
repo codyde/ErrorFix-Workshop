@@ -50,11 +50,11 @@ export function CartItem({ item }: CartItemProps) {
         </div>
       </div>
       <div className="flex flex-col items-end gap-2">
-        <p className="font-medium text-red-500">${(item.price * item.quantity).toFixed(2)}</p>
+        <p className="font-medium text-green-500">${(item.price * item.quantity).toFixed(2)}</p>
         <Button
           variant="ghost"
           size="icon"
-          className="h-8 w-8 text-muted-foreground hover:text-red-500"
+          className="h-8 w-8 text-muted-foreground hover:text-green-500"
           onClick={() => removeItem(item.id, item.selectedSize, item.selectedColor)}
         >
           <Trash2 className="h-4 w-4" />

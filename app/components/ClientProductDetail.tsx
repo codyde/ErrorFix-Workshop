@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { Product } from '@/types';
-import { ProductDetails } from '@/components/product-details';
-import { ProductRecommendations } from '@/components/product-recommendations';
-import { notFound } from 'next/navigation';
+import { useEffect, useState } from "react";
+import { Product } from "@/types";
+import { ProductDetails } from "@/components/product-details";
+import { ProductRecommendations } from "@/components/product-recommendations";
+import { notFound } from "next/navigation";
 // import * as Sentry from '@sentry/nextjs';
 interface ClientProductDetailProps {
   productId: string;
@@ -20,36 +20,42 @@ export function ClientProductDetail({ productId }: ClientProductDetailProps) {
     try {
       setLoading(true);
       console.log(`Loading product ${productId} from API...`);
-      
+
       const productResponse = await fetch(`/api/products/${productId}`);
-      
+
       if (!productResponse.ok) {
         if (productResponse.status === 404) {
           notFound();
-          return;
         }
         // Sentry.captureException(new Error(`API error: ${productResponse.status} ${productResponse.statusText}`));
-        throw new Error(`Unable to reach product api for ${productId}: ${productResponse.status} ${productResponse.statusText}`);
+        throw new Error(
+          `Unable to reach product api for ${productId}: ${productResponse.status} ${productResponse.statusText}`,
+        );
       }
-      
+
       const productData = await productResponse.json();
-      
+
       // Fetch all products for related items
-      const allProductsResponse = await fetch('/api/products');
-      
+      const allProductsResponse = await fetch("/api/products");
+
       if (!allProductsResponse.ok) {
         // Sentry.captureException(new Error(`API error: ${allProductsResponse.status} ${allProductsResponse.statusText}`));
-        throw new Error(`Unable to reach product api for all products: ${allProductsResponse.status} ${allProductsResponse.statusText}`);
+        throw new Error(
+          `Unable to reach product api for all products: ${allProductsResponse.status} ${allProductsResponse.statusText}`,
+        );
       }
-      
+
       const allProducts = await allProductsResponse.json();
-      
+
       setProduct(productData);
-      
+
       const related = allProducts
-        .filter((p: Product) => p.category === productData.category && p.id !== productData.id)
+        .filter(
+          (p: Product) =>
+            p.category === productData.category && p.id !== productData.id,
+        )
         .slice(0, 4);
-        
+
       setRelatedProducts(related);
       setLoading(false);
     } catch (err) {

@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { Product } from '@/types';
-import { useCart } from '@/context/cart-context';
-import { Button } from '@/components/ui/button';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
-import { Star, Minus, Plus, ShoppingCart, Heart } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import Image from "next/image";
+import { Product } from "@/types";
+import { useCart } from "@/context/cart-context";
+import { Button } from "@/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { Star, Minus, Plus, ShoppingCart, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ProductDetailsProps {
   product: Product;
@@ -21,7 +21,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [quantity, setQuantity] = useState(1);
   const { addItem } = useCart();
-  
+
   const handleAddToCart = () => {
     addItem({
       id: product.id,
@@ -33,10 +33,10 @@ export function ProductDetails({ product }: ProductDetailsProps) {
       selectedColor,
     });
   };
-  
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <motion.div 
+      <motion.div
         className="space-y-4"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -56,7 +56,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             <button
               key={index}
               className={`relative aspect-square w-20 overflow-hidden rounded-md bg-gray-800 ${
-                selectedImage === index ? 'ring-2 ring-red-500' : ''
+                selectedImage === index ? "ring-2 ring-green-500" : ""
               }`}
               onClick={() => setSelectedImage(index)}
             >
@@ -70,8 +70,8 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           ))}
         </div>
       </motion.div>
-      
-      <motion.div 
+
+      <motion.div
         className="space-y-6"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -86,24 +86,26 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                   key={i}
                   className={`h-4 w-4 ${
                     i < Math.floor(product.rating)
-                      ? 'text-yellow-500 fill-yellow-500'
-                      : 'text-muted-foreground'
+                      ? "text-yellow-500 fill-yellow-500"
+                      : "text-muted-foreground"
                   }`}
                 />
               ))}
             </div>
             <span className="ml-2 text-sm text-muted-foreground">
-              {product.rating} ({product.reviewCount} reviews)
+              {product.rating.toFixed(1)} ({product.reviewCount} reviews)
             </span>
           </div>
-          <p className="text-2xl font-bold mt-4 text-red-500">${product.price.toFixed(2)}</p>
+          <p className="text-2xl font-bold mt-4 text-green-500">
+            ${product.price.toFixed(2)}
+          </p>
         </div>
-        
+
         <Separator className="bg-gray-800" />
-        
+
         <div className="space-y-4">
           <div>
-            <h3 className="font-medium mb-2">Error Severity</h3>
+            <h3 className="font-medium mb-2">Size</h3>
             <RadioGroup
               value={selectedSize}
               onValueChange={setSelectedSize}
@@ -118,7 +120,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                   />
                   <Label
                     htmlFor={`size-${size}`}
-                    className="flex h-10 px-3 cursor-pointer items-center justify-center rounded-md border border-gray-700 bg-gray-800 peer-data-[state=checked]:border-red-500 peer-data-[state=checked]:bg-red-500/10 peer-data-[state=checked]:text-red-500"
+                    className="flex h-10 px-3 cursor-pointer items-center justify-center rounded-md border border-gray-700 bg-gray-800 peer-data-[state=checked]:border-green-500 peer-data-[state=checked]:bg-green-500/10 peer-data-[state=checked]:text-green-500"
                   >
                     {size}
                   </Label>
@@ -126,9 +128,9 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               ))}
             </RadioGroup>
           </div>
-          
+
           <div>
-            <h3 className="font-medium mb-2">Framework</h3>
+            <h3 className="font-medium mb-2">Color</h3>
             <RadioGroup
               value={selectedColor}
               onValueChange={setSelectedColor}
@@ -143,7 +145,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                   />
                   <Label
                     htmlFor={`color-${color}`}
-                    className="flex h-10 px-3 cursor-pointer items-center justify-center rounded-md border border-gray-700 bg-gray-800 peer-data-[state=checked]:border-red-500 peer-data-[state=checked]:bg-red-500/10 peer-data-[state=checked]:text-red-500"
+                    className="flex h-10 px-3 cursor-pointer items-center justify-center rounded-md border border-gray-700 bg-gray-800 peer-data-[state=checked]:border-green-500 peer-data-[state=checked]:bg-green-500/10 peer-data-[state=checked]:text-green-500"
                   >
                     {color}
                   </Label>
@@ -151,7 +153,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               ))}
             </RadioGroup>
           </div>
-          
+
           <div>
             <h3 className="font-medium mb-2">License Quantity</h3>
             <div className="flex items-center space-x-2">
@@ -175,18 +177,26 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             </div>
           </div>
         </div>
-        
+
         <div className="flex flex-col sm:flex-row gap-4">
-          <Button className="flex-1 bg-red-600 hover:bg-red-700 text-white" size="lg" onClick={handleAddToCart}>
+          <Button
+            className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+            size="lg"
+            onClick={handleAddToCart}
+          >
             <ShoppingCart className="mr-2 h-5 w-5" /> Add to Cart
           </Button>
-          <Button variant="outline" size="lg" className="border-red-600 text-red-500 hover:bg-red-600/10">
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-green-600 text-green-500 hover:bg-green-600/10"
+          >
             <Heart className="mr-2 h-5 w-5" /> Save
           </Button>
         </div>
-        
+
         <Separator className="bg-gray-800" />
-        
+
         <div>
           <h3 className="font-medium mb-2">Description</h3>
           <p className="text-muted-foreground">{product.description}</p>
