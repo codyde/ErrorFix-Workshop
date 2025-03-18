@@ -1,1 +1,6 @@
-[]
+[
+  {
+    "file": "0000_goofy_chamber.sql",
+    "sql": "CREATE TABLE `products` (\n\t`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,\n\t`name` text NOT NULL,\n\t`description` text NOT NULL,\n\t`price` real NOT NULL,\n\t`category` text NOT NULL,\n\t`featured` integer DEFAULT false NOT NULL,\n\t`in_stock` integer DEFAULT true NOT NULL,\n\t`rating` real,\n\t`review_count` integer DEFAULT 0,\n\t`images` text DEFAULT '[]' NOT NULL,\n\t`sizes` text DEFAULT '[]' NOT NULL,\n\t`colors` text DEFAULT '[]' NOT NULL\n);\n"
+  }
+]

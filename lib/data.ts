@@ -1,140 +1,37 @@
-import { Product } from '@/types';
+import { Product } from "@/types";
+import { faker } from "@faker-js/faker";
 
-export const products: Product[] = [
-  {
-    id: '1',
-    name: 'Hydration Mismatch Resolver Pro',
-    description: 'Tired of "Text content did not match server-rendered HTML" errors ruining your React app? Our Hydration Mismatch Resolver Pro uses quantum entanglement to ensure your server and client renders are perfectly synchronized. Includes a free "Warning: Expected server HTML to contain a matching div" suppressor. Side effects may include slightly delayed initial renders and occasional déjà vu.',
-    price: 1899.99,
-    images: [
-      'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    ],
-    category: 'frontend',
-    featured: true,
-    sizes: ['Minor Mismatch', 'Critical Hydration Failure'],
-    colors: ['React', 'Next.js', 'Remix'],
+const products: Product[] = [];
+
+for (let i = 0; i < 3000; i++) {
+  const product: Product = {
+    id: `${i}`,
+    name: faker.commerce.productName(),
+    description: faker.commerce.productDescription(),
+    price: parseInt(faker.commerce.price({ min: 9.99, max: 9999.99 })),
+    images: [faker.image.urlPicsumPhotos(), faker.image.urlPicsumPhotos()],
+    category: faker.commerce.department(),
+    sizes: faker.helpers.arrayElements([
+      "Extra Small",
+      "Small",
+      "Medium",
+      "Large",
+      "Extra Large",
+    ]),
+    colors: faker.helpers.arrayElements([
+      "Red",
+      "Blue",
+      "Green",
+      "Yellow",
+      "Black",
+    ]),
+    featured: faker.datatype.boolean(),
     inStock: true,
-    rating: 4.8,
-    reviewCount: 124,
-  },
-  {
-    id: '2',
-    name: '502 Bad Gateway Exorcist',
-    description: 'Banish those demonic 502 errors to the shadow realm! Our Bad Gateway Exorcist performs a ritual cleansing of your load balancers, proxy servers, and API gateways. Comes with a sacred "Connection Reset by Peer" amulet and a vial of holy water for emergency nginx restarts. Warning: May cause servers to speak in tongues temporarily.',
-    price: 2349.99,
-    images: [
-      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1597600159211-d6c104f408d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    ],
-    category: 'networking',
-    featured: true,
-    sizes: ['Intermittent', 'Catastrophic'],
-    colors: ['Nginx', 'Apache', 'Cloudflare'],
-    inStock: true,
-    rating: 4.9,
-    reviewCount: 87,
-  },
-  {
-    id: '3',
-    name: 'SQL Query Optimizer 9000',
-    description: 'Transform your database from a sloth to a cheetah! Our SQL Query Optimizer 9000 analyzes your most horrific queries and performs dark magic to make them blazing fast. Includes automatic index suggestion, query rewriting, and a complimentary "SELECT * FROM bad_practices WHERE developer = YOU" report. Guaranteed to reduce your DBA\'s blood pressure by 30%.',
-    price: 3299.99,
-    images: [
-      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    ],
-    category: 'database',
-    featured: false,
-    sizes: ['Slow Query', 'Table Scan Disaster', 'Join Apocalypse'],
-    colors: ['MySQL', 'PostgreSQL', 'SQL Server'],
-    inStock: true,
-    rating: 4.7,
-    reviewCount: 215,
-  },
-  {
-    id: '4',
-    name: 'N+1 Query Terminator',
-    description: 'Stop your ORM from firing 10,000 queries to load a single page! Our N+1 Query Terminator hunts down and eliminates inefficient database access patterns with extreme prejudice. Features eager loading enforcement, relationship preloading, and a stern lecture for your junior developers. Comes with a "I\'ll be back... with better queries" t-shirt.',
-    price: 2499.99,
-    images: [
-      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1573164574572-cb89e39749b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    ],
-    category: 'database',
-    featured: true,
-    sizes: ['One Size'],
-    colors: ['Hibernate', 'Sequelize', 'ActiveRecord'],
-    inStock: true,
-    rating: 4.6,
-    reviewCount: 178,
-  },
-  {
-    id: '5',
-    name: 'Downtime Defender Shield',
-    description: 'Achieve that mythical "five nines" uptime with our Downtime Defender Shield! Creates an impenetrable barrier around your production environment, protecting it from random AWS outages, accidental kubectl deletes, and "just pushing this small change on Friday" syndrome. Includes automatic failover, disaster recovery, and a direct hotline to your CEO to explain why the site is still down.',
-    price: 4999.99,
-    images: [
-      'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    ],
-    category: 'devops',
-    featured: false,
-    sizes: ['Startup', 'Enterprise', 'Mission Critical'],
-    colors: ['AWS', 'GCP', 'Azure'],
-    inStock: true,
-    rating: 4.9,
-    reviewCount: 64,
-  },
-  {
-    id: '6',
-    name: 'Dependency Hell Escape Ladder',
-    description: 'Climb out of dependency hell with our sturdy Escape Ladder. Untangle your package.json, resolve version conflicts, and eliminate those circular dependencies. Comes with a free "node_modules black hole detector" and a shoulder to cry on when npm install fails for the 100th time.',
-    price: 899.99,
-    images: [
-      'https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    ],
-    category: 'devops',
-    featured: false,
-    sizes: ['Small Project', 'Monorepo'],
-    colors: ['npm Red', 'Yarn Blue'],
-    inStock: true,
-    rating: 4.7,
-    reviewCount: 92,
-  },
-  {
-    id: '7',
-    name: 'Database Connection Pooling Lifeguard',
-    description: 'Stop your database connections from drowning in a sea of requests! Our Connection Pooling Lifeguard monitors your connection pool, rescues zombie connections, and performs CPR on your database when it\'s gasping for resources. Includes waterproof connection management, leak detection, and a stylish red swimsuit for your database administrator.',
-    price: 1789.99,
-    images: [
-      'https://images.unsplash.com/photo-1607798748738-b15c40d33d57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    ],
-    category: 'database',
-    featured: false,
-    sizes: ['Standard Pool', 'Enterprise Pool'],
-    colors: ['PostgreSQL', 'MySQL', 'MongoDB'],
-    inStock: true,
-    rating: 4.8,
-    reviewCount: 156,
-  },
-  {
-    id: '8',
-    name: 'Unhandled Exception Detection',
-    description: 'Catch those sneaky unhandled exceptions before they wreak havoc on your application! Our Exception Detection system proactively identifies potential runtime errors and adds robust error boundaries to prevent catastrophic failures. Includes exception tracking, automated error reporting, and an emergency "exception quarantine" system that isolates problematic code while keeping the rest of your application running smoothly.',
-    price: 2999.99,
-    images: [
-      'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    ],
-    category: 'microservices',
-    featured: true,
-    sizes: ['One Size'],
-    colors: ['Kubernetes', 'Docker', 'Serverless'],
-    inStock: true,
-    rating: 4.9,
-    reviewCount: 73,
-  },
-];
+    rating: faker.number.float({ min: 1.5, max: 4.9 }),
+    reviewCount: faker.number.int({ min: 9, max: 317 }),
+  };
+  products.push(product);
+}
+
+export { products };
+
