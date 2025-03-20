@@ -151,12 +151,6 @@ export default function CheckoutPage() {
 
   return (
     <div className="container max-w-5xl mx-auto py-10 px-4">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-red-500">
-          Secure Checkout
-        </h1>
-      </div>
-
       {!isAuthenticated && (
         <div className="max-w-3xl mx-auto mb-6 p-4 border border-red-800 rounded-lg bg-red-900/30">
           <div className="flex items-center justify-between">
@@ -177,7 +171,10 @@ export default function CheckoutPage() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-7 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-7 grid-rows-[30px_1fr] gap-8">
+        <h1 className="lg:col-span-4 text-3xl text-center font-bold mb-6 text-red-500">
+          Secure Checkout
+        </h1>
         <div className="lg:col-span-4">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-4 p-4 border border-gray-800 rounded-lg">
