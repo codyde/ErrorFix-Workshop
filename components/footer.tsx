@@ -14,7 +14,7 @@ export default function Footer() {
               <span className="text-xl font-bold">ErrorFix</span>
             </Link>
             <p className="text-gray-400 text-sm">
-              Unique artifacts from across the dimensions.
+              Good'ish solutions for your most frustrating development errors
             </p>
             <div className="flex space-x-4">
               <a
@@ -151,8 +151,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} ErrorFix. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} ErrorFix. All rights reserved.
           </p>
         </div>
       </div>
