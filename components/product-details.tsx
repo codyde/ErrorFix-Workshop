@@ -56,7 +56,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             <button
               key={index}
               className={`relative aspect-square w-20 overflow-hidden rounded-md bg-gray-800 ${
-                selectedImage === index ? "ring-2 ring-green-500" : ""
+                selectedImage === index ? "ring-2 ring-red-500" : ""
               }`}
               onClick={() => setSelectedImage(index)}
             >
@@ -96,7 +96,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               {product.rating.toFixed(1)} ({product.reviewCount} reviews)
             </span>
           </div>
-          <p className="text-2xl font-bold mt-4 text-green-500">
+          <p className="text-2xl font-bold mt-4 text-red-500">
             ${product.price.toFixed(2)}
           </p>
         </div>
@@ -120,7 +120,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                   />
                   <Label
                     htmlFor={`size-${size}`}
-                    className="flex h-10 px-3 cursor-pointer items-center justify-center rounded-md border border-gray-700 bg-gray-800 peer-data-[state=checked]:border-green-500 peer-data-[state=checked]:bg-green-500/10 peer-data-[state=checked]:text-green-500"
+                    className="flex h-10 px-3 cursor-pointer items-center justify-center rounded-md border border-gray-700 bg-gray-800 peer-data-[state=checked]:border-red-500 peer-data-[state=checked]:bg-red-500/10 peer-data-[state=checked]:text-red-500"
                   >
                     {size}
                   </Label>
@@ -145,7 +145,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                   />
                   <Label
                     htmlFor={`color-${color}`}
-                    className="flex h-10 px-3 cursor-pointer items-center justify-center rounded-md border border-gray-700 bg-gray-800 peer-data-[state=checked]:border-green-500 peer-data-[state=checked]:bg-green-500/10 peer-data-[state=checked]:text-green-500"
+                    className="flex h-10 px-3 cursor-pointer items-center justify-center rounded-md border border-gray-700 bg-gray-800 peer-data-[state=checked]:border-red-500 peer-data-[state=checked]:bg-red-500/10 peer-data-[state=checked]:text-red-500"
                   >
                     {color}
                   </Label>
@@ -180,7 +180,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
 
         <div className="flex flex-col sm:flex-row gap-4">
           <Button
-            className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+            className="flex-1 bg-red-600 hover:bg-red-700 text-white"
             size="lg"
             onClick={handleAddToCart}
           >
@@ -189,7 +189,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           <Button
             variant="outline"
             size="lg"
-            className="border-green-600 text-green-500 hover:bg-green-600/10"
+            className="border-red-600 text-red-500 hover:bg-red-600/10"
           >
             <Heart className="mr-2 h-5 w-5" /> Save
           </Button>

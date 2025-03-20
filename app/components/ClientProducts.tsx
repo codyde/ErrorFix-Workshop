@@ -61,7 +61,7 @@ export function ClientProducts() {
   if (error) {
     return (
       <div className="text-center py-10">
-        <div className="text-green-500 text-xl">Error loading products</div>
+        <div className="text-red-500 text-xl">Error loading products</div>
         <div className="mt-2">{error}</div>
       </div>
     );
@@ -77,7 +77,7 @@ export function ClientProducts() {
             <FeaturedProductsSkeleton />
           </div>
           <div className="mt-16">
-            <h2 className="text-4xl font-bold tracking-tight mb-8 text-green-500">
+            <h2 className="text-4xl font-bold tracking-tight mb-8 text-red-500">
               All Products
             </h2>
             <ProductGridSkeleton />
@@ -91,7 +91,7 @@ export function ClientProducts() {
             products={featuredProducts}
           />
           <div className="container">
-            <h2 className="text-4xl font-bold tracking-tight mb-8 text-green-500">
+            <h2 className="text-4xl font-bold tracking-tight mb-8 text-red-500">
               All Products
             </h2>
             {products.length > 0 ? (

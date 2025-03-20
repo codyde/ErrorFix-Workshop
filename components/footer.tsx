@@ -10,8 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
-              <Bug className="h-6 w-6 text-green-500" />
-              <span className="text-xl font-bold">Interdimensional Depot</span>
+              <Bug className="h-6 w-6 text-red-500" />
+              <span className="text-xl font-bold">ErrorFix</span>
             </Link>
             <p className="text-gray-400 text-sm">
               Unique artifacts from across the dimensions.
@@ -151,7 +151,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Interdimensional Depot. All rights
+            &copy; {new Date().getFullYear()} ErrorFix. All rights
             reserved.
           </p>
         </div>

@@ -5,15 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/cart-context";
 import { Button } from "@/components/ui/button";
-import {
-  Menu,
-  X,
-  Search,
-  ShoppingCart,
-  User,
-  LogOut,
-  Eclipse,
-} from "lucide-react";
+import { Menu, X, Search, ShoppingCart, User, LogOut, Bug } from "lucide-react";
 import { CartModal } from "@/components/cart-modal";
 import { LoginDialog } from "@/components/login-dialog";
 import { cn } from "@/lib/utils";
@@ -74,16 +66,16 @@ export default function Header() {
           </Button>
 
           <Link href="/" className="flex items-center space-x-2">
-            <Eclipse className="h-6 w-6 text-green-500" />
-            <span className="font-bold text-xl">Interdimensional Depot</span>
+            <Bug className="h-6 w-6 text-red-500" />
+            <span className="font-bold text-xl">ErrorFix</span>
           </Link>
 
           <nav className="hidden md:flex ml-10 space-x-6">
             <Link
               href="/"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-green-500",
-                pathname === "/" ? "text-green-500" : "text-muted-foreground",
+                "text-sm font-medium transition-colors hover:text-red-500",
+                pathname === "/" ? "text-red-500" : "text-muted-foreground",
               )}
             >
               Home
@@ -91,9 +83,9 @@ export default function Header() {
             <Link
               href="/products/1"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-green-500",
+                "text-sm font-medium transition-colors hover:text-red-500",
                 pathname.startsWith("/products")
-                  ? "text-green-500"
+                  ? "text-red-500"
                   : "text-muted-foreground",
               )}
             >
@@ -102,10 +94,8 @@ export default function Header() {
             <Link
               href="/cart"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-green-500",
-                pathname === "/cart"
-                  ? "text-green-500"
-                  : "text-muted-foreground",
+                "text-sm font-medium transition-colors hover:text-red-500",
+                pathname === "/cart" ? "text-red-500" : "text-muted-foreground",
               )}
             >
               Cart
@@ -126,7 +116,7 @@ export default function Header() {
           >
             <ShoppingCart className="h-5 w-5" />
             {itemCount > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-green-600 text-xs text-primary-foreground">
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs text-primary-foreground">
                 {itemCount}
               </span>
             )}
@@ -137,14 +127,14 @@ export default function Header() {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="relative">
                   <User className="h-5 w-5" />
-                  <span className="absolute -top-1 -right-1 flex h-3 w-3 rounded-full bg-green-500"></span>
+                  <span className="absolute -top-1 -right-1 flex h-3 w-3 rounded-full bg-red-500"></span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
                 className="bg-gray-900 border-gray-800"
               >
-                <DropdownMenuLabel className="text-green-500">
+                <DropdownMenuLabel className="text-red-500">
                   {user?.name || "User"}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator className="bg-gray-800" />
@@ -161,7 +151,7 @@ export default function Header() {
             <Button
               variant="outline"
               size="sm"
-              className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+              className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
               onClick={() => setIsLoginOpen(true)}
             >
               Login
@@ -178,7 +168,7 @@ export default function Header() {
               href="/"
               className={cn(
                 "block py-2 text-sm font-medium",
-                pathname === "/" ? "text-green-500" : "text-muted-foreground",
+                pathname === "/" ? "text-red-500" : "text-muted-foreground",
               )}
             >
               Home
@@ -188,7 +178,7 @@ export default function Header() {
               className={cn(
                 "block py-2 text-sm font-medium",
                 pathname.startsWith("/products")
-                  ? "text-green-500"
+                  ? "text-red-500"
                   : "text-muted-foreground",
               )}
             >
@@ -198,7 +188,7 @@ export default function Header() {
               href="/cart"
               className={cn(
                 "block py-2 text-sm font-medium",
-                pathname === "/cart" ? "text-green-500" : "text-muted-foreground",
+                pathname === "/cart" ? "text-red-500" : "text-muted-foreground",
               )}
             >
               Cart

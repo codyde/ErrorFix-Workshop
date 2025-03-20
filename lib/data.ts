@@ -3,6 +3,8 @@ import { faker } from "@faker-js/faker";
 
 const products: Product[] = [];
 
+let maxFeatured = 15;
+
 for (let i = 0; i < 3000; i++) {
   const product: Product = {
     id: `${i}`,
@@ -25,7 +27,7 @@ for (let i = 0; i < 3000; i++) {
       "Yellow",
       "Black",
     ]),
-    featured: faker.datatype.boolean(),
+    featured: maxFeatured-- > 1 ? faker.datatype.boolean() : false,
     inStock: true,
     rating: faker.number.float({ min: 1.5, max: 4.9 }),
     reviewCount: faker.number.int({ min: 9, max: 317 }),
@@ -34,4 +36,3 @@ for (let i = 0; i < 3000; i++) {
 }
 
 export { products };
-

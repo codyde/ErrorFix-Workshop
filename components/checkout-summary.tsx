@@ -11,7 +11,7 @@ export function CheckoutSummary() {
   return (
     <Card className="bg-gray-900 border-gray-800">
       <CardContent className="pt-6">
-        <h2 className="text-2xl font-semibold mb-4 text-green-500">Order Summary</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-red-500">Order Summary</h2>
         
         <div className="space-y-4 mb-6">
           {items.map((item) => (
@@ -23,7 +23,7 @@ export function CheckoutSummary() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-green-600 text-xs text-primary-foreground">
+                <div className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs text-primary-foreground">
                   {item.quantity}
                 </div>
               </div>
@@ -32,7 +32,7 @@ export function CheckoutSummary() {
                 <p className="text-xs text-muted-foreground mt-1">
                   {item.selectedSize} / {item.selectedColor}
                 </p>
-                <p className="text-sm font-medium mt-1 text-green-500">${(item.price * item.quantity).toFixed(2)}</p>
+                <p className="text-sm font-medium mt-1 text-red-500">${(item.price * item.quantity).toFixed(2)}</p>
               </div>
             </div>
           ))}
@@ -56,7 +56,7 @@ export function CheckoutSummary() {
           <Separator className="my-4 bg-gray-800" />
           <div className="flex justify-between text-lg font-semibold">
             <span>Total</span>
-            <span className="text-green-500">${totalPrice.toFixed(2)}</span>
+            <span className="text-red-500">${totalPrice.toFixed(2)}</span>
           </div>
         </div>
       </CardContent>

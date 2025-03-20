@@ -6,7 +6,6 @@ import { useCart } from "@/context/cart-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CheckoutSummary } from "@/components/checkout-summary";
 import { CreditCard, CheckCircle, Lock, AlertCircle } from "lucide-react";
@@ -153,24 +152,24 @@ export default function CheckoutPage() {
   return (
     <div className="container max-w-5xl mx-auto py-10 px-4">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-green-500">
+        <h1 className="text-3xl font-bold mb-6 text-red-500">
           Secure Checkout
         </h1>
       </div>
 
       {!isAuthenticated && (
-        <div className="max-w-3xl mx-auto mb-6 p-4 border border-green-800 rounded-lg bg-green-900/30">
+        <div className="max-w-3xl mx-auto mb-6 p-4 border border-red-800 rounded-lg bg-red-900/30">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="font-medium text-green-200">Login Required</h2>
-              <p className="text-sm text-green-300">
+              <h2 className="font-medium text-red-200">Login Required</h2>
+              <p className="text-sm text-red-300">
                 You must be logged in to complete checkout
               </p>
             </div>
             <Button
               variant="outline"
               onClick={() => setIsLoginOpen(true)}
-              className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+              className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
             >
               Login
             </Button>
@@ -205,7 +204,7 @@ export default function CheckoutPage() {
             <div className="space-y-4 p-4 border border-gray-800 rounded-lg">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <Lock className="h-4 w-4 mr-2 text-green-500" />
+                  <Lock className="h-4 w-4 mr-2 text-red-500" />
                   <h2 className="text-xl font-semibold">Payment</h2>
                 </div>
 
@@ -233,7 +232,7 @@ export default function CheckoutPage() {
                         }));
                       }
                     }}
-                    className="border-green-500 data-[state=checked]:bg-green-500 data-[state=checked]:text-white"
+                    className="border-red-500 data-[state=checked]:bg-red-500 data-[state=checked]:text-white"
                   />
                   <Label
                     htmlFor="useMockPayment"
@@ -302,15 +301,15 @@ export default function CheckoutPage() {
             </div>
 
             {purchaseError && (
-              <div className="p-3 bg-green-900/30 border border-green-800 rounded-lg flex items-start">
-                <AlertCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <p className="text-sm text-green-400">{purchaseError}</p>
+              <div className="p-3 bg-red-900/30 border border-red-800 rounded-lg flex items-start">
+                <AlertCircle className="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" />
+                <p className="text-sm text-red-400">{purchaseError}</p>
               </div>
             )}
 
             <Button
               type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white"
+              className="w-full bg-red-600 hover:bg-red-700 text-white"
               size="lg"
               disabled={processingPurchase || !isAuthenticated}
             >
@@ -323,7 +322,7 @@ export default function CheckoutPage() {
 
             <div className="flex items-center justify-center text-xs text-muted-foreground">
               <Lock className="h-3 w-3 mr-1" />
-              <span>Secure checkout powered by Interdimensional Depot</span>
+              <span>Secure checkout powered by ErrorFix</span>
             </div>
           </form>
         </div>

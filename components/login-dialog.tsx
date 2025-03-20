@@ -73,8 +73,8 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px] bg-gray-900 border-gray-800">
         <DialogHeader>
-          <DialogTitle className="text-xl text-green-500">
-            Login to Interdimensional Depot
+          <DialogTitle className="text-xl text-red-500">
+            Login to ErrorFix
           </DialogTitle>
           <DialogDescription>
             Enter your credentials to access the multiverse's best products.
@@ -115,13 +115,13 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
           </div>
 
           {error && (
-            <div className="text-sm text-green-500 font-medium">{error}</div>
+            <div className="text-sm text-red-500 font-medium">{error}</div>
           )}
 
           <DialogFooter>
             <Button
               type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white"
+              className="w-full bg-red-600 hover:bg-red-700 text-white"
               disabled={isLoading}
             >
               {isLoading ? (

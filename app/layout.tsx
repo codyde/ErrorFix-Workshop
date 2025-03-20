@@ -10,7 +10,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Interdimensional Depot | Goods from Beyond",
+  title: "ErrorFix | Goods from Beyond",
   description: "Because Code Breaks and Someone Has to Fix it ",
 };
 
